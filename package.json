@@ -1,38 +1,43 @@
 {
-    "name": "Planbot-Bob",
-    "version": "0.0.1",
-    "description": "Recursive Group Activity Planning Application",
-    "keywords": [
-        "Grouplanner",
-        "Planbot",
-        "Bob",
-        "Node.js",
-        "application",
-        "planning"
-    ],
-    "authors": [
-        {
-            "name": "Joris Griffioen",
-            "email": "joris.griffioen@live.nl",
-            "url": ""
-        },
-        {
-            "name": "Niels Overwijn",
-            "email": "",
-            "url": ""
-        }
-    ],
-    "engines": {
-        "node": ">= 0.6.0",
-        "npm": ">= 1.0.0"
+  "name": "Planbot-Bob",
+  "version": "0.0.1",
+  "description": "Recursive Group Activity Planning Application",
+  "keywords": [
+    "Grouplanner",
+    "Planbot",
+    "Bob",
+    "Node.js",
+    "application",
+    "planning"
+  ],
+  "authors": [
+    {
+      "name": "Joris Griffioen",
+      "email": "joris.griffioen@live.nl",
+      "url": ""
     },
-    "dependencies": {
-        "express": "~4.9.7",
-        "moment": "^2.8.3",
-        "mongodb": "~1.4.10",
-        "mongoose": "~3.8.16"
-    },
-    "devDependencies": {},
-    "bundleDependencies": [],
-    "main": "server.js"
+    {
+      "name": "Niels Overwijn",
+      "email": "",
+      "url": ""
+    }
+  ],
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "~4.9.7",
+    "lodash": "^3.10.1",
+    "moment": "^2.8.3",
+    "mongodb": "~1.4.10",
+    "mongoose": "~3.8.16",
+    "needle": "^0.10.0",
+    "nodejs-websocket": "^1.3.0",
+    "websocket": "^1.0.21"
+  },
+  "devDependencies": {
+  },
+  "bundleDependencies": [],
+  "main": "server.js"
 }
