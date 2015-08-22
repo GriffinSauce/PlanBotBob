@@ -1,29 +1,37 @@
 #!/bin/env node
 
-var secrets = require('./secrets.json');
+// Modules
 var express = require('express');
 var needle = require('needle');
 var _ = require('lodash');
 var app = express();
 var WebSocketClient = require('websocket').client;
 
-// Start RTM session and get connection url
+// Secrets
+var secrets = require('./secrets.json');
+
+// Services
+var messages = require('./services/messages');
+
+
+// Start RTM session
 needle.get("https://slack.com/api/rtm.start?token="+secrets.token, function(err, response){
     if(!response.body.ok) { return console.error('Some kinda error', response.body.errors); }
+    var team = response.body;
 
     // Find channel for proof of concept
 
     // Find user
-    var user = _.find(response.body.users, function(thisUser){
+    var user = _.find(team.users, function(thisUser){
         return thisUser.name === 'jorisdekoelste'; // 'niels';
     });
 
     // Find IM channel
-    var userChannel = _.find(response.body.ims, function(ch){
+    var userChannel = _.find(team.ims, function(ch){
         return ch.user === user.id;
     });
 
-
+    // Set up websocket client
     var client = new WebSocketClient();
 
     client.on('connectFailed', function(error) {
@@ -38,15 +46,13 @@ needle.get("https://slack.com/api/rtm.start?token="+secrets.token, function(err,
         connection.on('close', function() {
             console.log('echo-protocol Connection Closed');
         });
-        connection.on('message', function(message) {
-            console.log("Received:", message);
+        messages.init(connection, team, function(){
+            messages.send({
+                "type": "message",
+                "channel": userChannel.id,
+                "text": "Hello world!"
+            });
         });
-        connection.sendUTF(JSON.stringify({
-            "id": 1,
-            "type": "message",
-            "channel": userChannel.id,
-            "text": "Hello world!"
-        }));
     });
 
     // Try to connect
