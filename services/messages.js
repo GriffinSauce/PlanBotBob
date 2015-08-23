@@ -4,14 +4,10 @@
  *
  */
 
-// Modules
-var _ = require('lodash');
-
 var connection;
 var messageIndex = 0;
 
-// Initialise message service
-// Binds listeners
+// Initialise message service and bind listeners
 module.exports.init = function(conn, team, callback) {
     console.log('Initializing message service');
     connection = conn;
@@ -27,8 +23,10 @@ function send(data) {
     data.id = ++messageIndex;
     console.log('Sending message',data);
     connection.sendUTF(JSON.stringify(data));
-};
+}
 
+// Handle incoming messages
+// TODO: Split messages and other events
 function handleMessage(message) {
     message = JSON.parse(message.utf8Data);
     console.log("Received:", message);

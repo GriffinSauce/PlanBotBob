@@ -15,6 +15,7 @@ var messages = require('./services/messages');
 
 
 // Start RTM session
+// TODO: Move this to messages service
 needle.get("https://slack.com/api/rtm.start?token="+secrets.token, function(err, response){
     if(!response.body.ok) { return console.error('Some kinda error', response.body.errors); }
     var team = response.body;
