@@ -27,18 +27,6 @@ module.exports.init = function(cb) {
         if(!response.body.ok) { return console.error('Some kinda error', response.body.errors); }
         var team = response.body;
 
-        // Find channel for proof of concept
-
-        // Find user
-        var user = _.find(team.users, function(thisUser){
-            return thisUser.name === 'jorisdekoelste'; // 'niels';
-        });
-
-        // Find IM channel
-        var userChannel = _.find(team.ims, function(ch){
-            return ch.user === user.id;
-        });
-
         // Set up websocket client
         var client = new WebSocketClient();
 
