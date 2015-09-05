@@ -15,6 +15,8 @@ var Availability = require('./schemas/availability.js');
 **/
 function setAvailability(user, date, part, available)
 {
+	part = part.toLowerCase();
+
 	Availability.findOrCreate(
   {
     user: user,
@@ -23,7 +25,7 @@ function setAvailability(user, date, part, available)
 	{},
   function(err, availability, created)
   {
-      if(part === null || part === undefined)
+      if(part === 'allday')
 			{
 				availability.part.morning = available;
 				availability.part.afternoon = available;
