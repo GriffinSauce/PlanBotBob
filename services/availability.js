@@ -44,3 +44,5 @@ function setAvailability(user, date, part, available)
 // TODO: function setRange(date, user)
 
 // TODO: function getRange(fromDate, toDate, [user]) - User optional, no user = combine all data
+
+module.exports.setAvailability = setAvailability;
