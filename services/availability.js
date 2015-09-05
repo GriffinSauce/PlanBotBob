@@ -5,6 +5,14 @@
  */
 
 var Availability = require('./schemas/availability.js');
+
+/**
+* Set the availability for a user
+* @param user {String} username to set the availability for
+* @param date {Date} date for which the availability will be set
+* @param part {String} morning, afternoon, evening, allday
+* @param available {Boolean} availability of the user
+**/
 function setAvailability(user, date, part, available)
 {
 	Availability.findOrCreate(
