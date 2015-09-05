@@ -6,6 +6,12 @@ var _ = require('lodash');
 var app = express();
 var fs = require('fs');
 
+// Initialise config
+global.pbb = require('./config.json');
+
+// Set up database connection
+var database = require('./database.js');
+
 // Services
 var messages = require('./services/messages');
 
