@@ -35,16 +35,18 @@ module.exports.init = function(cb) {
             console.log('Connect Error: ' + error.toString());
         });
 
-        client.on('connect', function(connection) {
-            connection.on('error', function(error) {
+        client.on('connect', function(conn) {
+            connection = conn;
+            connectionLive = true;
+            conn.on('error', function(error) {
                 connectionLive = false;
                 console.log("Connection Error: " + error.toString());
             });
-            connection.on('close', function() {
+            conn.on('close', function() {
                 connectionLive = false;
                 console.log('echo-protocol Connection Closed');
             });
-            connection.on('message', handleMessage);
+            conn.on('message', handleMessage);
         });
 
         // Try to connect
