@@ -4,7 +4,7 @@
  *
  */
 
-var Availability = require('./schemas/availability.js');
+var Availability = require('../schemas/availability.js');
 
 /**
 * Set the availability for a user
