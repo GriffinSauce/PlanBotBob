@@ -8,6 +8,7 @@
 var needle = require('needle');
 var _ = require('lodash');
 var WebSocketClient = require('websocket').client;
+var moment = require('moment');
 
 // Secrets
 var secrets = require('../secrets.json');
@@ -89,5 +90,20 @@ function handleMessage(message) {
             "text": "Sure, hi!"
         });
     }
-}
 
+		if(message.type === 'message' && message.text.match('evening|afternoon|morning|allday') !== null) {
+		var part = message.text.match('evening|afternoon|morning');
+		var available = message.text.match('true|false')[0] === 'true' ? true : false;
+
+			send(
+				{
+					"type": "message",
+					"channel": message.channel,
+					"text": "Planning"
+				}
+			);
+			var avl = require('./availability.js');
+			console.log(message);
+			avl.setAvailability(message.user, moment().format("YYYY-MM-DD"), part[0], available);
+		}
+}
