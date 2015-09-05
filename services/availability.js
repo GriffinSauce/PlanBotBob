@@ -31,7 +31,7 @@ function setAvailability(user, date, part, available)
 				availability.part.afternoon = available;
 				availability.part.evening = available;
 			} else {
-				availability[part] = available;
+				availability.part[part] = available;
 			}
       availability.save(function(err)
       {
@@ -40,6 +40,8 @@ function setAvailability(user, date, part, available)
   });
 }
 // TODO: function getDate(date,  [user]) - User optional, no user = combine all data
+
+
 
 // TODO: function setRange(date, user)
 
