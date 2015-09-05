@@ -1,17 +1,17 @@
 {
     "slackChannel": "C07SAHR4K",
     "users": [
-        "ID1": {
+      	{
             "firstName":    "Joris",
             "lastName":     "Griffioen",
             "slackName":    "jorisdekoelste",
             "slackID":      "U07SA4P7W",
             "slackIMChannelID": "D095A6D8F"
         },
-        "ID2": {
+        {
             "firstName":    "Niels",
             "lastName":     "Overwijn",
-            "slackName":    "niels"
+            "slackName":    "niels",
             "slackID":      "U07S99R5K",
             "slackIMChannelID": "D095AH36V"
         }
